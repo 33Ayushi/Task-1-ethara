@@ -1,497 +1,472 @@
-# Full Professional Prompt
+# MASTER PROMPT — STOCKPULSE INDIA  
+## Production-Grade Full Stack Fintech Platform + Browser Extension
+
+# 1. Context and Role
+
+You are a senior full-stack developer, UI/UX architect, animation designer, browser extension engineer, and performance optimization specialist responsible for building a complete fintech ecosystem called **StockPulse India**.
+
+This project should not feel like a beginner dashboard or simple portfolio project. The final platform should behave and look like a real-world premium fintech product inspired by:
+- TradingView
+- Zerodha
+- Groww
+- Bloomberg dashboards
+- Modern SaaS financial platforms
+
+The application should feel:
+- Smooth and interactive
+- Premium and modern
+- Responsive across all devices
+- Highly scalable
+- Visually polished
+- Production-ready
+- Professionally engineered
+
+The application should guide users naturally through financial information using smooth animations, premium layouts, responsive interactions, and modern dashboard storytelling.
+
+The project must strictly use:
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Recharts
+- Radix UI
+- Axios
+- Date-fns
+
+The entire system should prioritize:
+- Clean architecture
+- Performance optimization
+- Accessibility
+- Reusable components
+- Responsive design
+- Maintainability
+- Scalable engineering practices
+- Production-grade quality
+
+Avoid:
+- Deprecated APIs
+- Messy folder structures
+- Monolithic components
+- Duplicate logic
+- Heavy animations
+- Poor responsiveness
+- Unnecessary dependencies
 
 ---
 
-# Context and Role
+# 2. Objective
 
-As a Senior Full-Stack Frontend Engineer specializing in immersive digital experiences, modern UI engineering, and scalable web applications, you are responsible for designing and developing a production-grade animated portfolio website that delivers a cinematic storytelling experience using Framer Motion.
+The main objective is to build a complete fintech ecosystem that combines:
+- Stock market analytics platform
+- Browser extension system
+- Scalable backend architecture
+- Modern dashboard interface
+- Watchlist management
+- Authentication handling
+- Interactive market visualization tools
 
-The platform must showcase professional projects, technical expertise, achievements, and developer experience through smooth scroll-driven interactions, advanced animations, and modern responsive layouts while maintaining accessibility, performance optimization, and scalable architecture.
+The final product should feel deployable in a real-world production environment rather than appearing like a student-level project or static template.
 
-Additionally, the system must include a secure full-stack contact infrastructure where visitors can submit inquiries through an animated modal form, securely store submission data, and automatically trigger professional email notifications to the portfolio owner.
+Users should experience:
+- Smooth financial interactions
+- Real-time market analytics
+- Premium dashboard storytelling
+- Fast and responsive performance
+- Modern fintech aesthetics
+- Interactive chart systems
 
-The final application should feel premium, interactive, highly polished, and visually engaging while following modern frontend engineering standards and deployment-ready practices.
-
----
-
-# Objective
-
-Develop a complete high-performance full-stack portfolio platform that:
-
-- Implements immersive scroll-based storytelling animations using Framer Motion.
-- Delivers a modern cinematic UI with smooth page transitions and interactive experiences.
-- Presents projects, skills, achievements, and experience in a visually engaging narrative flow.
-- Includes an animated “Get in Touch” interaction system.
-- Opens a fully animated modal contact form.
-- Securely validates and stores user submissions.
-- Sends automated real-time email notifications to the portfolio owner.
-- Provides seamless responsiveness across all devices.
-- Maintains accessibility, scalability, and production-level code quality.
+The platform should visually communicate financial data in a clean, engaging, and professional manner.
 
 ---
 
-# Core Experience Requirements
+# 3. UI and Animation Requirements
 
-The portfolio must create a storytelling-driven user journey where each section transitions naturally into the next with smooth animations and motion-based interactions.
+The user interface should feel cinematic, modern, immersive, and highly polished. Every section should transition naturally into the next so the platform feels connected instead of static.
 
-The user experience should feel:
+Use Framer Motion for:
+- Fade animations
+- Scroll-triggered transitions
+- Hover micro-interactions
+- Floating motion effects
+- Smooth section reveals
+- Staggered content animations
+- Animated chart rendering
 
-- Modern
-- Premium
-- Interactive
-- Minimal yet immersive
-- Highly responsive
-- Smooth and cinematic
+The design system should include:
+- Modern gradients
+- Premium shadows
+- Financial-themed colors
+- Responsive spacing
+- Clean typography
+- Glassmorphism where appropriate
 
-The website should maintain:
+Animations should improve usability and visual quality rather than distract users.
 
-- Excellent scroll performance
-- Optimized rendering
-- GPU-accelerated animations
-- Clean motion hierarchy
-- Stable frame rates on mobile and desktop
+Animations must remain GPU-friendly by primarily using:
+- transform
+- opacity
 
----
+Avoid:
+- Layout thrashing
+- Heavy repaint animations
+- Laggy transitions
+- Excessive motion effects
+- Poor mobile animation performance
 
-# UI and Animation Requirements
-
-## Scroll-Based Storytelling System
-
-Implement advanced scroll-triggered animations using Framer Motion.
-
-The storytelling flow must include:
-
-- Sequential section reveals
-- Smooth motion progression
-- Layered animation timing
-- Interactive transitions
-- Visual continuity between sections
-
-### Required Animation Effects
-
-Implement:
-
-- Parallax scrolling effects
-- Fade-in animations
-- Slide transitions
-- Scale transforms
-- Staggered child animations
-- Motion-based hover interactions
-- Smooth section transitions
-- Scroll progress-based transformations
-
-### Animation Performance Rules
-
-Animations must:
-
-- Use transform and opacity for GPU acceleration
-- Avoid layout thrashing
-- Prevent unnecessary re-renders
-- Maintain scroll smoothness
-- Use lazy motion loading where appropriate
-- Support reduced-motion accessibility preferences
+The UI should remain smooth even on lower-end devices.
 
 ---
 
-# Section Requirements
-
-## Hero Section
-
-The hero section must include:
-
-- Animated introduction text
-- Motion-driven headline reveal
-- Interactive call-to-action buttons
-- Background motion effects
-- Smooth entrance animations
-- Scroll indicator animation
-
-The hero section should create a strong first impression with cinematic visual hierarchy.
-
----
-
-## About Section
-
-The about section must include:
-
-- Animated text reveal
-- Scroll-triggered paragraph transitions
-- Smooth content fade-ins
-- Responsive layout structure
-- Professional developer introduction
-- Personal branding presentation
-
----
-
-## Skills Section
-
-The skills section must include:
-
-- Animated progress indicators
-- Motion-based skill cards
-- Staggered animation reveals
-- Interactive hover states
-- Technology categorization
-- Frontend, Backend, Database, and Tools segmentation
-
-Animations should visually represent technical proficiency levels.
-
----
-
-## Projects Section
-
-The projects section must include:
-
-- Interactive project cards
-- Hover-based motion effects
-- Animated project previews
-- Smooth scaling transitions
-- GitHub/live demo interactions
-- Responsive project grid layout
-
-Each project card should support:
-
-- Project image
-- Description
-- Technology stack
-- Live preview link
-- GitHub repository link
-
----
-
-## Experience and Achievements Section
-
-Include:
-
-- Animated timeline transitions
-- Career progression storytelling
-- Achievement counters
-- Motion-based statistics
-- Smooth reveal effects
-
----
-
-## Contact Call-to-Action Section
-
-The contact section must include:
-
-- Strong visual CTA
-- Animated “Get in Touch” button
-- Background transition effects
-- Interactive hover animations
-
-The CTA should encourage user interaction naturally.
-
----
-
-# Contact System Requirements
-
-## Modal Interaction System
-
-Clicking the “Get in Touch” button must:
-
-- Open a centered animated modal
-- Lock background scrolling
-- Animate modal entrance and exit using Framer Motion
-- Support smooth backdrop transitions
-- Allow click-outside close behavior
-- Include keyboard accessibility support
-
----
-
-# Contact Form Requirements
-
-## Required Fields
-
-The modal form must include:
-
-- Full Name (required)
-- Email Address (required)
-- Phone Number (required)
-- Subject (optional)
-- Message (optional)
-
----
-
-## Validation Requirements
-
-Implement:
-
-- Real-time validation
-- Proper error messages
-- Email format validation
-- Phone number validation
-- Empty field prevention
-- Submit button disabled state for invalid inputs
-
-Validation should provide:
-
-- Inline feedback
-- Accessible error handling
-- Clear UX messaging
-
----
-
-# Backend Requirements
-
-## API Infrastructure
-
-Develop a secure backend API to:
-
-- Receive contact submissions
-- Validate request payloads
-- Sanitize incoming data
-- Store submission logs
-- Trigger automated email notifications
-
-Use:
-
-- Node.js + Express OR Next.js API Routes
-
----
-
-## Data Storage
-
-Securely store submission details in:
-
-- Server logs
-- MongoDB OR PostgreSQL database
-
-Submission records should contain:
-
-- Name
-- Email
-- Phone number
-- Subject
-- Message
-- Submission timestamp
-- User IP (optional)
-- Device metadata (optional)
-
----
-
-# Email Notification System
-
-Implement secure email delivery using:
-
-- Nodemailer with SMTP
-OR
-- Transactional email APIs
-
-Email notifications sent to portfolio owner must include:
-
-- Visitor name
-- Email address
-- Phone number
-- Subject
-- Message
-- Timestamp
-
-The system should also optionally:
-
-- Send confirmation email to the visitor
-- Include branded email templates
-
----
-
-# Security Requirements
-
-The application must implement:
-
-- Environment variable protection
-- Input sanitization
-- XSS prevention
-- Injection attack prevention
-- API rate limiting
-- Spam protection
-- CAPTCHA integration (optional)
-- Secure HTTP headers
-- CORS protection
-
-Sensitive credentials must never be exposed in frontend code.
-
----
-
-# Data Processing Requirements
-
-All user inputs must:
-
-- Be sanitized before processing
-- Be validated server-side
-- Prevent malicious payload injection
-- Return structured API responses
-
----
-
-# API Response Structure
-
-## Success Response
-
-```json
-{
-  "success": true,
-  "message": "Message sent successfully."
-}
-```
-
-## Error Response
-
-```json
-{
-  "success": false,
-  "message": "Failed to send message.",
-  "error": "Detailed server error"
-}
-```
-
----
-
-# Performance Optimization Requirements
-
-The system must:
-
-- Optimize bundle sizes
-- Implement code splitting
-- Lazy-load heavy sections
-- Use image optimization
-- Maintain fast initial page load
-- Prevent animation jank
-- Use debouncing where required
-- Optimize API performance
-- Ensure scalability under high traffic
-
----
-
-# Accessibility Requirements
-
-The portfolio must follow accessibility best practices:
-
-- Semantic HTML
-- Proper heading hierarchy
-- ARIA labels
-- Keyboard navigation
-- Screen-reader compatibility
-- Focus management
-- Reduced motion support
-- Sufficient color contrast
-
----
-
-# SEO Requirements
-
-Implement:
-
-- Meta tags
-- Open Graph metadata
-- Structured data
-- Sitemap generation
-- Optimized page titles
-- Semantic layouts
-- Performance-focused SEO strategies
-
----
-
-# Responsive Design Requirements
-
-The website must be fully responsive across:
-
+# 4. Layout Requirements
+
+The layout architecture should remain modular, readable, scalable, and responsive while maintaining strong visual hierarchy.
+
+The platform should include:
+- Cinematic hero section
+- Market overview dashboard
+- Financial chart system
+- Trending stocks section
+- Watchlist interface
+- Search functionality
+- User dashboard
+- Profile management
+- Settings pages
+- Help and support sections
+
+Responsive layouts must adapt naturally across:
 - Mobile devices
 - Tablets
-- Laptops
-- Large desktop screens
+- Desktop screens
+- Ultra-wide displays
 
-Responsive behavior should include:
+Prevent:
+- Overflow issues
+- Broken charts
+- Clipped text
+- Layout instability
+- Tiny touch targets
 
-- Fluid typography
-- Adaptive layouts
-- Responsive spacing
-- Optimized touch interactions
-
----
-
-# Folder Structure Documentation
-
-Provide a clean scalable folder architecture including:
-
-- Components
-- Animations
-- Hooks
-- Utilities
-- API routes
-- Database configuration
-- Assets
-- Styles
-- Context/state management
+The mobile experience should feel intentionally optimized instead of simply shrinking desktop layouts.
 
 ---
 
-# Deployment Requirements
+# 5. Contact System Requirements
 
-Document deployment steps for:
+Create a complete contact and communication system that allows users to:
+- Submit queries
+- Request support
+- Send feedback
+- Contact the platform team
 
-- Vercel
-- Netlify
-- Render
-- Railway
-- VPS deployment (optional)
+The contact system should include:
+- Validation handling
+- Loading states
+- Success feedback
+- Error handling
+- Accessible form interactions
 
-Include:
+Forms should feel responsive, smooth, visually polished, and easy to use.
 
-- Environment setup
-- Production build instructions
-- Email configuration
-- Database setup
-- Security recommendations
+Prevent:
+- Empty submissions
+- Invalid inputs
+- Broken requests
+- Confusing validation states
+
+All user actions should provide immediate visual feedback so users always understand the status of their submissions.
 
 ---
 
-# Technology Stack
+# 6. Backend Requirements
 
-## Frontend
+Create a scalable backend architecture capable of handling:
+- Authentication
+- APIs
+- Market data processing
+- Watchlist persistence
+- Session management
+- Future scalability requirements
 
-- React.js OR Next.js
+Use the following backend structure:
+
+```txt
+backend/
+│
+├── server.js
+├── config/
+├── models/
+├── routes/
+├── middleware/
+├── controllers/
+├── .env
+└── package.json
+```
+
+The backend should follow proper separation of concerns:
+- `routes/` should manage API endpoints and request routing.
+- `controllers/` should contain business logic and response handling.
+- `middleware/` should handle authentication, validation, security, and reusable request processing.
+- `models/` should define schemas, validation logic, and database structures.
+- `config/` should manage reusable environment configuration and external services.
+
+The backend must remain:
+- Secure
+- Modular
+- Scalable
+- Maintainable
+- Production-ready
+
+Sensitive values such as JWT secrets, API keys, and database credentials must only exist inside `.env` files and should never be exposed publicly.
+
+---
+
+# 7. Data Processing Requirements
+
+The platform should efficiently process:
+- Stock market data
+- Analytics information
+- Watchlist data
+- API responses
+- User-related data
+
+Use Axios for API communication and keep all request handling centralized, reusable, and modular.
+
+The system should properly handle:
+- Loading states
+- API failures
+- Retry logic
+- Empty responses
+- Invalid data
+- Network interruptions
+
+Avoid:
+- Repeated API logic
+- Inefficient fetching patterns
+- Unnecessary rerenders
+- Scattered request handling
+
+The data layer should remain optimized, scalable, and maintainable.
+
+---
+
+# 8. Output Requirements
+
+The final output should include:
+- Premium fintech dashboard
+- Browser extension ecosystem
+- Responsive layouts
+- Animated financial charts
+- Scalable backend architecture
+- Reusable UI components
+- Smooth motion systems
+- Secure authentication
+- API integrations
+- Production-grade engineering quality
+
+Use the following frontend structure:
+
+```txt
+src/
+ ├── app/
+ ├── components/
+ │    ├── charts/
+ │    ├── dashboard/
+ │    ├── market/
+ │    ├── ui/
+ │    ├── animations/
+ │    └── layout/
+ ├── hooks/
+ ├── services/
+ ├── lib/
+ ├── utils/
+ ├── constants/
+ ├── styles/
+ └── types/
+```
+
+If new modules or features are added later:
+- Remove unnecessary sections
+- Remove duplicate utilities
+- Remove dead components
+- Maintain clean architecture
+
+Avoid unnecessary project clutter.
+
+---
+
+# 9. Error Handling and Documentation
+
+The platform should gracefully handle:
+- API failures
+- Invalid requests
+- Empty states
+- Loading delays
+- Authentication failures
+- Unexpected runtime issues
+
+Provide:
+- Retry options
+- Loading indicators
+- User-friendly feedback
+- Graceful fallbacks
+- Clean empty-state interfaces
+
+The application should never completely break because of failed requests.
+
+Documentation should clearly explain:
+- Reusable utilities
+- Architecture decisions
+- API setup
+- Environment configuration
+- Complex reusable systems
+
+Avoid excessive comments everywhere, but document critical systems clearly enough for long-term maintainability.
+
+---
+
+# 10. Performance and Scalability
+
+Performance optimization is extremely important. The platform should feel lightweight, smooth, responsive, and fast across all devices.
+
+Implement:
+- Lazy loading
+- Dynamic imports
+- Optimized rendering
+- Efficient animation handling
+- Memoization where appropriate
+- Reusable state management
+
+Avoid:
+- Oversized bundles
+- Heavy client-side rendering
+- Unnecessary rerenders
+- Animation lag
+- Performance bottlenecks
+
+The architecture should support future feature expansion, additional APIs, larger datasets, and long-term scalability.
+
+---
+
+# 11. Technology Stack
+
+The project must strictly use:
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS v4
 - Framer Motion
-- Tailwind CSS
-- TypeScript (preferred)
+- Recharts
+- Radix UI
+- Axios
+- Date-fns
 
-## Backend
+Follow modern engineering practices including:
+- Strict TypeScript typing
+- Reusable component architecture
+- Modular folder organization
+- Clean naming conventions
+- Scalable code structure
+- Maintainable engineering standards
 
-- Node.js
-- Express.js OR Next.js API Routes
-- Nodemailer
-- dotenv
+Avoid:
+- Deprecated APIs
+- Hardcoded hacks
+- Duplicate logic
+- Oversized components
+- Messy state management
+- Unnecessary complexity
 
-## Database (Optional)
-
-- MongoDB
-OR
-- PostgreSQL
-
-## Additional Recommended Tools
-
-- React Hook Form
-- Zod/Yup Validation
-- GSAP (optional advanced animations)
-- Lenis Smooth Scroll
-- ShadCN UI
-- Prisma ORM
+Avoid using `any` types unless absolutely necessary.
 
 ---
 
-# Final Deliverables
+# Extension Structure
 
-The final solution must include:
+```txt
+extension/
+│
+├── manifest.json
+├── popup.html
+├── popup.css
+├── popup.js
+├── background.js
+├── auth.js
+├── api.js
+├── storage.js
+└── icons/
+```
 
-- Fully functional animated portfolio website
-- Cinematic scroll-based storytelling experience
-- Responsive modern UI
-- Animated modal contact form
-- Secure backend API
-- Database integration
-- Automated email notification system
-- Structured validation and error handling
-- Production-ready folder structure
-- Deployment documentation
-- Optimized scalable architecture
-- Accessibility-compliant implementation
-- SEO-optimized frontend
+The browser extension should support:
+- Authentication handling
+- Popup interactions
+- Background services
+- API communication
+- Local storage management
+- Session persistence
+
+The popup experience should feel:
+- Fast
+- Minimal
+- Responsive
+- Modern
+- Visually premium
+
+Avoid placing all extension logic inside a single file.
+
+---
+
+# Dashboard Structure
+
+```txt
+dashboard/
+│
+├── index.html
+├── dashboard.js
+├── dashboard.css
+├── profile.html
+├── settings.html
+└── help.html
+```
+
+The dashboard should provide:
+- Analytics visualization
+- User profile management
+- Settings handling
+- Support systems
+- Interactive financial insights
+
+The interface should remain:
+- Readable
+- Responsive
+- Modern
+- Easy to navigate
+- Visually balanced
+
+The dashboard should never feel cluttered or confusing.
+
+---
+
+# Final Expectations
+
+The final result should feel like a real-world fintech ecosystem created by an experienced engineering team rather than a beginner project or static portfolio demo.
+
+The platform should include:
+- Premium UI/UX
+- Smooth motion systems
+- Responsive layouts
+- Browser extension ecosystem
+- Scalable backend architecture
+- Production-grade code quality
+- Secure authentication handling
+- Strong performance optimization
+- Reusable component systems
+- Modern engineering standards
+
+The final product should feel:
+- Enterprise-grade
+- Highly polished
+- Real-world deployable
+- Scalable for future growth
+- Professionally engineered
+- Visually premium
