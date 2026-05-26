@@ -1,360 +1,472 @@
-# 🌦 Weather Forecasting Web Application
+# MASTER PROMPT — STOCKPULSE INDIA  
+## Production-Grade Full Stack Fintech Platform + Browser Extension
 
-A modern full-stack Weather Forecasting Web Application built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion** featuring cinematic scroll-based storytelling animations, real-time weather APIs, analytics dashboards, and production-ready backend architecture.
+# 1. Context and Role
 
----
+You are a senior full-stack developer, UI/UX architect, animation designer, browser extension engineer, and performance optimization specialist responsible for building a complete fintech ecosystem called **StockPulse India**.
 
-# 🚀 Features
+This project should not feel like a beginner dashboard or simple portfolio project. The final platform should behave and look like a real-world premium fintech product inspired by:
+- TradingView
+- Zerodha
+- Groww
+- Bloomberg dashboards
+- Modern SaaS financial platforms
 
-## 🌤 Real-Time Weather Forecasting
-- Search weather by city
-- Real-time weather updates
-- Current temperature display
-- Humidity, pressure, and wind speed
-- Air quality insights
-- Hourly weather forecasting
-- 5-day weather forecasting
+The application should feel:
+- Smooth and interactive
+- Premium and modern
+- Responsive across all devices
+- Highly scalable
+- Visually polished
+- Production-ready
+- Professionally engineered
 
----
+The application should guide users naturally through financial information using smooth animations, premium layouts, responsive interactions, and modern dashboard storytelling.
 
-# 🎬 Cinematic UI & Animations
-
-Built with **Framer Motion** for immersive interactions:
-
-- Scroll-based storytelling
-- Smooth fade & slide animations
-- Animated weather cards
-- Dynamic temperature transitions
-- Section reveal animations
-- GPU-optimized motion effects
-- Responsive animated layouts
-
----
-
-# 📊 Analytics & Visualization
-
-Includes:
-- Weather trend charts
-- Hourly analytics
-- Temperature graphs
-- Forecast visualization
-- Responsive charts using Recharts
-
----
-
-# 🛡 Backend & Security
-
-Secure backend powered by:
-- Next.js API Routes
-- Environment variables
-- API rate limiting
-- Input validation
-- MongoDB integration
-- Secure API handling
-
----
-
-# ⚡ Performance Optimization
-
-Optimized for production using:
-- Dynamic imports
-- Lazy loading
-- API caching
-- Image optimization
-- Server Components
-- Edge-ready architecture
-- Skeleton loading states
-
----
-
-# 🧰 Tech Stack
-
-## Frontend
-- Next.js (App Router)
+The project must strictly use:
+- Next.js 16 App Router
+- React 19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - Framer Motion
 - Recharts
+- Radix UI
+- Axios
+- Date-fns
 
-## Backend
-- Next.js API Routes
-- Node.js
-
-## Database
-- MongoDB Atlas
-
-## APIs
-- OpenWeather API
-- WeatherAPI.com
-
-## Deployment
-- Vercel
-
----
-
-# 📁 Folder Structure
-
-```plaintext
-/app
-├── layout.tsx
-├── page.tsx
-├── globals.css
-├── api
-│   └── weather
-│       └── route.ts
-├── loading.tsx
-└── not-found.tsx
-
-/components
-├── Hero.tsx
-├── WeatherSearch.tsx
-├── WeatherCard.tsx
-├── ForecastSection.tsx
-├── AirQuality.tsx
-├── HourlyForecast.tsx
-├── AnimatedSection.tsx
-├── WeatherCharts.tsx
-├── Loader.tsx
-└── Navbar.tsx
-
-/lib
-├── fetchWeather.ts
-├── rateLimiter.ts
-├── validate.ts
-├── db.ts
-└── constants.ts
-
-/models
-└── SearchHistory.ts
-```
-
----
-
-# ⚙️ Installation & Setup
-
-## 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/weather-forecast-app.git
-```
-
----
-
-## 2. Navigate to Project Directory
-
-```bash
-cd weather-forecast-app
-```
-
----
-
-## 3. Install Dependencies
-
-```bash
-npm install
-```
-
----
-
-# 🔑 Environment Variables
-
-Create a `.env.local` file in the root directory.
-
-```env
-WEATHER_API_KEY=your_openweather_api_key
-MONGO_URI=your_mongodb_uri
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
----
-
-# ▶️ Run Development Server
-
-```bash
-npm run dev
-```
-
-Open:
-
-```plaintext
-http://localhost:3000
-```
-
----
-
-# 🌐 API Route
-
-## Weather Endpoint
-
-```plaintext
-/api/weather
-```
-
-### Example Request
-
-```plaintext
-/api/weather?city=London
-```
-
----
-
-# 🎥 Framer Motion Animation System
-
-The project uses:
-- `motion.div`
-- `whileInView`
-- `useScroll`
-- `useTransform`
-- Staggered animations
-- Parallax effects
-
-Animations are optimized using:
-- `opacity`
-- `transform`
-- `scale`
-
-Avoided:
-- Width/height transitions
-- Layout thrashing
-
----
-
-# 📈 Performance Features
-
-- Lazy loaded charts
-- Dynamic imports
-- API caching
-- Redis-ready rate limiting
-- Optimized rendering
-- Skeleton loaders
-- CDN-ready assets
-
----
-
-# 🛠 Production Optimizations
-
-- SEO-friendly architecture
-- Accessibility support
+The entire system should prioritize:
+- Clean architecture
+- Performance optimization
+- Accessibility
+- Reusable components
 - Responsive design
-- Type-safe structure
-- Error boundaries
-- Optimized bundle size
-- Edge deployment support
+- Maintainability
+- Scalable engineering practices
+- Production-grade quality
+
+Avoid:
+- Deprecated APIs
+- Messy folder structures
+- Monolithic components
+- Duplicate logic
+- Heavy animations
+- Poor responsiveness
+- Unnecessary dependencies
 
 ---
 
-# 🧪 Future Improvements
+# 2. Objective
 
-Potential enhancements:
-- AI weather summaries
-- Voice-based weather search
-- WebSocket live updates
-- Multi-language support
-- PWA offline support
-- Dark/light theme toggle
+The main objective is to build a complete fintech ecosystem that combines:
+- Stock market analytics platform
+- Browser extension system
+- Scalable backend architecture
+- Modern dashboard interface
+- Watchlist management
+- Authentication handling
+- Interactive market visualization tools
+
+The final product should feel deployable in a real-world production environment rather than appearing like a student-level project or static template.
+
+Users should experience:
+- Smooth financial interactions
+- Real-time market analytics
+- Premium dashboard storytelling
+- Fast and responsive performance
+- Modern fintech aesthetics
+- Interactive chart systems
+
+The platform should visually communicate financial data in a clean, engaging, and professional manner.
 
 ---
 
-# 🚀 Deployment
+# 3. UI and Animation Requirements
 
-## Deploy on Vercel
+The user interface should feel cinematic, modern, immersive, and highly polished. Every section should transition naturally into the next so the platform feels connected instead of static.
 
-### Install Vercel CLI
+Use Framer Motion for:
+- Fade animations
+- Scroll-triggered transitions
+- Hover micro-interactions
+- Floating motion effects
+- Smooth section reveals
+- Staggered content animations
+- Animated chart rendering
 
-```bash
-npm install -g vercel
+The design system should include:
+- Modern gradients
+- Premium shadows
+- Financial-themed colors
+- Responsive spacing
+- Clean typography
+- Glassmorphism where appropriate
+
+Animations should improve usability and visual quality rather than distract users.
+
+Animations must remain GPU-friendly by primarily using:
+- transform
+- opacity
+
+Avoid:
+- Layout thrashing
+- Heavy repaint animations
+- Laggy transitions
+- Excessive motion effects
+- Poor mobile animation performance
+
+The UI should remain smooth even on lower-end devices.
+
+---
+
+# 4. Layout Requirements
+
+The layout architecture should remain modular, readable, scalable, and responsive while maintaining strong visual hierarchy.
+
+The platform should include:
+- Cinematic hero section
+- Market overview dashboard
+- Financial chart system
+- Trending stocks section
+- Watchlist interface
+- Search functionality
+- User dashboard
+- Profile management
+- Settings pages
+- Help and support sections
+
+Responsive layouts must adapt naturally across:
+- Mobile devices
+- Tablets
+- Desktop screens
+- Ultra-wide displays
+
+Prevent:
+- Overflow issues
+- Broken charts
+- Clipped text
+- Layout instability
+- Tiny touch targets
+
+The mobile experience should feel intentionally optimized instead of simply shrinking desktop layouts.
+
+---
+
+# 5. Contact System Requirements
+
+Create a complete contact and communication system that allows users to:
+- Submit queries
+- Request support
+- Send feedback
+- Contact the platform team
+
+The contact system should include:
+- Validation handling
+- Loading states
+- Success feedback
+- Error handling
+- Accessible form interactions
+
+Forms should feel responsive, smooth, visually polished, and easy to use.
+
+Prevent:
+- Empty submissions
+- Invalid inputs
+- Broken requests
+- Confusing validation states
+
+All user actions should provide immediate visual feedback so users always understand the status of their submissions.
+
+---
+
+# 6. Backend Requirements
+
+Create a scalable backend architecture capable of handling:
+- Authentication
+- APIs
+- Market data processing
+- Watchlist persistence
+- Session management
+- Future scalability requirements
+
+Use the following backend structure:
+
+```txt
+backend/
+│
+├── server.js
+├── config/
+├── models/
+├── routes/
+├── middleware/
+├── controllers/
+├── .env
+└── package.json
 ```
 
-### Deploy
+The backend should follow proper separation of concerns:
+- `routes/` should manage API endpoints and request routing.
+- `controllers/` should contain business logic and response handling.
+- `middleware/` should handle authentication, validation, security, and reusable request processing.
+- `models/` should define schemas, validation logic, and database structures.
+- `config/` should manage reusable environment configuration and external services.
 
-```bash
-vercel
+The backend must remain:
+- Secure
+- Modular
+- Scalable
+- Maintainable
+- Production-ready
+
+Sensitive values such as JWT secrets, API keys, and database credentials must only exist inside `.env` files and should never be exposed publicly.
+
+---
+
+# 7. Data Processing Requirements
+
+The platform should efficiently process:
+- Stock market data
+- Analytics information
+- Watchlist data
+- API responses
+- User-related data
+
+Use Axios for API communication and keep all request handling centralized, reusable, and modular.
+
+The system should properly handle:
+- Loading states
+- API failures
+- Retry logic
+- Empty responses
+- Invalid data
+- Network interruptions
+
+Avoid:
+- Repeated API logic
+- Inefficient fetching patterns
+- Unnecessary rerenders
+- Scattered request handling
+
+The data layer should remain optimized, scalable, and maintainable.
+
+---
+
+# 8. Output Requirements
+
+The final output should include:
+- Premium fintech dashboard
+- Browser extension ecosystem
+- Responsive layouts
+- Animated financial charts
+- Scalable backend architecture
+- Reusable UI components
+- Smooth motion systems
+- Secure authentication
+- API integrations
+- Production-grade engineering quality
+
+Use the following frontend structure:
+
+```txt
+src/
+ ├── app/
+ ├── components/
+ │    ├── charts/
+ │    ├── dashboard/
+ │    ├── market/
+ │    ├── ui/
+ │    ├── animations/
+ │    └── layout/
+ ├── hooks/
+ ├── services/
+ ├── lib/
+ ├── utils/
+ ├── constants/
+ ├── styles/
+ └── types/
 ```
 
----
+If new modules or features are added later:
+- Remove unnecessary sections
+- Remove duplicate utilities
+- Remove dead components
+- Maintain clean architecture
 
-# ☁ MongoDB Setup
-
-1. Create MongoDB Atlas account
-2. Create cluster
-3. Copy connection string
-4. Add to `.env.local`
-
-Example:
-
-```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/weather-app
-```
+Avoid unnecessary project clutter.
 
 ---
 
-# 📦 Build for Production
+# 9. Error Handling and Documentation
 
-```bash
-npm run build
-```
+The platform should gracefully handle:
+- API failures
+- Invalid requests
+- Empty states
+- Loading delays
+- Authentication failures
+- Unexpected runtime issues
+
+Provide:
+- Retry options
+- Loading indicators
+- User-friendly feedback
+- Graceful fallbacks
+- Clean empty-state interfaces
+
+The application should never completely break because of failed requests.
+
+Documentation should clearly explain:
+- Reusable utilities
+- Architecture decisions
+- API setup
+- Environment configuration
+- Complex reusable systems
+
+Avoid excessive comments everywhere, but document critical systems clearly enough for long-term maintainability.
 
 ---
 
-# ▶️ Start Production Server
+# 10. Performance and Scalability
 
-```bash
-npm start
-```
+Performance optimization is extremely important. The platform should feel lightweight, smooth, responsive, and fast across all devices.
 
----
-
-# 📌 Complete User Flow
-
-1. User lands on cinematic Hero section
-2. Scroll animations initialize
-3. User searches a city
-4. Backend API fetches weather data
-5. Weather cards animate into view
-6. Forecast & analytics render
-7. Search history stores in MongoDB
-8. Smooth storytelling continues
-
----
-
-# 📊 Scalability Strategy
-
-- Redis caching
-- Edge rendering
-- CDN optimization
-- API fallback systems
+Implement:
 - Lazy loading
 - Dynamic imports
-- Monitoring with Sentry
+- Optimized rendering
+- Efficient animation handling
+- Memoization where appropriate
+- Reusable state management
+
+Avoid:
+- Oversized bundles
+- Heavy client-side rendering
+- Unnecessary rerenders
+- Animation lag
+- Performance bottlenecks
+
+The architecture should support future feature expansion, additional APIs, larger datasets, and long-term scalability.
 
 ---
 
-# 🎯 Final Result
+# 11. Technology Stack
 
-✔ Real-Time Weather Forecasting App  
-✔ Framer Motion Cinematic UI  
-✔ Scroll-Based Storytelling  
-✔ Animated Forecast Cards  
-✔ Secure Backend APIs  
-✔ MongoDB Integration  
-✔ Analytics Dashboard  
-✔ Responsive Design  
-✔ Production-Ready Architecture  
-
----
-
-# 👨‍💻 Author
-
-Developed using:
-- Next.js
+The project must strictly use:
+- Next.js 16 App Router
+- React 19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - Framer Motion
-- MongoDB
-- OpenWeather API
+- Recharts
+- Radix UI
+- Axios
+- Date-fns
+
+Follow modern engineering practices including:
+- Strict TypeScript typing
+- Reusable component architecture
+- Modular folder organization
+- Clean naming conventions
+- Scalable code structure
+- Maintainable engineering standards
+
+Avoid:
+- Deprecated APIs
+- Hardcoded hacks
+- Duplicate logic
+- Oversized components
+- Messy state management
+- Unnecessary complexity
+
+Avoid using `any` types unless absolutely necessary.
 
 ---
 
-# 📄 License
+# Extension Structure
 
-This project is licensed under the MIT License.
+```txt
+extension/
+│
+├── manifest.json
+├── popup.html
+├── popup.css
+├── popup.js
+├── background.js
+├── auth.js
+├── api.js
+├── storage.js
+└── icons/
+```
+
+The browser extension should support:
+- Authentication handling
+- Popup interactions
+- Background services
+- API communication
+- Local storage management
+- Session persistence
+
+The popup experience should feel:
+- Fast
+- Minimal
+- Responsive
+- Modern
+- Visually premium
+
+Avoid placing all extension logic inside a single file.
+
+---
+
+# Dashboard Structure
+
+```txt
+dashboard/
+│
+├── index.html
+├── dashboard.js
+├── dashboard.css
+├── profile.html
+├── settings.html
+└── help.html
+```
+
+The dashboard should provide:
+- Analytics visualization
+- User profile management
+- Settings handling
+- Support systems
+- Interactive financial insights
+
+The interface should remain:
+- Readable
+- Responsive
+- Modern
+- Easy to navigate
+- Visually balanced
+
+The dashboard should never feel cluttered or confusing.
+
+---
+
+# Final Expectations
+
+The final result should feel like a real-world fintech ecosystem created by an experienced engineering team rather than a beginner project or static portfolio demo.
+
+The platform should include:
+- Premium UI/UX
+- Smooth motion systems
+- Responsive layouts
+- Browser extension ecosystem
+- Scalable backend architecture
+- Production-grade code quality
+- Secure authentication handling
+- Strong performance optimization
+- Reusable component systems
+- Modern engineering standards
+
+The final product should feel:
+- Enterprise-grade
+- Highly polished
+- Real-world deployable
+- Scalable for future growth
+- Professionally engineered
+- Visually premium
