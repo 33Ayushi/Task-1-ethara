@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StockPulse India — Project Documentation</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a202c; background: #fff; font-size: 14px; line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 32px; }
+
+  /* Cover Page */
+  .cover { text-align: center; padding: 80px 0 60px; border-bottom: 3px solid #3b82f6; page-break-after: always; }
+  .cover .logo { font-size: 48px; font-weight: 900; color: #3b82f6; letter-spacing: -2px; }
+  .cover .logo span { color: #06b6d4; }
+  .cover .subtitle { font-size: 20px; color: #4a5568; margin: 12px 0 30px; }
+  .cover .meta { display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+  .cover .meta-item { text-align: center; }
+  .cover .meta-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #718096; }
+  .cover .meta-item .value { font-size: 15px; font-weight: 700; color: #2d3748; margin-top: 4px; }
+  .badge { display: inline-block; background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin: 4px; }
+  .badge.green { background: #f0fff4; color: #276749; border-color: #c6f6d5; }
+  .badge.purple { background: #faf5ff; color: #553c9a; border-color: #e9d8fd; }
+
+  /* Sections */
+  h1 { font-size: 28px; font-weight: 800; color: #1a202c; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; page-break-after: avoid; }
+  h2 { font-size: 20px; font-weight: 700; color: #2d3748; margin: 32px 0 12px; page-break-after: avoid; }
+  h3 { font-size: 16px; font-weight: 700; color: #4a5568; margin: 20px 0 8px; }
+  h4 { font-size: 14px; font-weight: 700; color: #2d3748; margin: 12px 0 6px; }
+  p { margin-bottom: 12px; color: #4a5568; }
+  ul, ol { margin: 8px 0 14px 22px; }
+  li { margin-bottom: 5px; color: #4a5568; }
+  strong { color: #2d3748; }
+  section { margin-bottom: 40px; page-break-inside: avoid; }
+
+  /* Code */
+  code { font-family: 'Consolas', 'Courier New', monospace; background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 2px 6px; font-size: 13px; color: #c53030; }
+  pre { background: #1a202c; color: #e2e8f0; border-radius: 8px; padding: 18px; overflow-x: auto; margin: 14px 0; font-size: 13px; line-height: 1.6; }
+  pre code { background: none; border: none; color: #e2e8f0; padding: 0; font-size: 13px; }
+  .comment { color: #68d391; }
+  .keyword { color: #76e4f7; }
+  .string { color: #fbd38d; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+  th { background: #2d3748; color: #fff; padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 9px 14px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) td { background: #f7fafc; }
+  tr:hover td { background: #ebf8ff; }
+
+  /* Cards */
+  .card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px 20px; margin: 14px 0; background: #f7fafc; }
+  .card.blue { border-left: 4px solid #3b82f6; background: #ebf8ff; }
+  .card.green { border-left: 4px solid #10b981; background: #f0fff4; }
+  .card.orange { border-left: 4px solid #f59e0b; background: #fffbeb; }
+  .card.red { border-left: 4px solid #ef4444; background: #fff5f5; }
+  .card.purple { border-left: 4px solid #8b5cf6; background: #faf5ff; }
+
+  /* Architecture diagram */
+  .arch { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 20px 0; }
+  .arch-box { background: #2d3748; color: #fff; border-radius: 8px; padding: 10px 28px; font-weight: 700; font-size: 14px; text-align: center; min-width: 220px; }
+  .arch-box.blue { background: #3b82f6; }
+  .arch-box.cyan { background: #0891b2; }
+  .arch-box.green { background: #059669; }
+  .arch-box.purple { background: #7c3aed; }
+  .arch-arrow { font-size: 22px; color: #718096; }
+
+  /* Interview QA */
+  .qa { margin: 14px 0; }
+  .question { background: #2d3748; color: #fff; padding: 10px 16px; border-radius: 8px 8px 0 0; font-weight: 700; font-size: 14px; }
+  .answer { background: #f7fafc; border: 1px solid #e2e8f0; border-top: none; padding: 12px 16px; border-radius: 0 0 8px 8px; }
+
+  /* Page break */
+  .page-break { page-break-before: always; }
+
+  /* TOC */
+  .toc a { text-decoration: none; color: #3b82f6; }
+  .toc li { margin-bottom: 6px; }
+  .toc .num { color: #718096; min-width: 28px; display: inline-block; }
+
+  @media print {
+    body { font-size: 13px; }
+    .container { padding: 20px; }
+    a { color: #3b82f6 !important; }
+    .cover { padding: 40px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="cover">
+  <div class="logo">Stock<span>Pulse</span> India</div>
+  <div class="subtitle">Full-Stack Stock Market Analytics Platform</div>
+  <div style="margin: 20px 0;">
+    <span class="badge">Next.js 16</span>
+    <span class="badge">TypeScript</span>
+    <span class="badge green">Alpha Vantage API</span>
+    <span class="badge purple">Recharts</span>
+    <span class="badge">Tailwind CSS</span>
+    <span class="badge green">Node.js</span>
+  </div>
+  <div class="meta">
+    <div class="meta-item"><div class="label">Project Type</div><div class="value">Web Application</div></div>
+    <div class="meta-item"><div class="label">Pages Built</div><div class="value">6 Pages</div></div>
+    <div class="meta-item"><div class="label">API</div><div class="value">Alpha Vantage</div></div>
+    <div class="meta-item"><div class="label">Market</div><div class="value">Indian NSE / BSE</div></div>
+    <div class="meta-item"><div class="label">Date</div><div class="value">March 2026</div></div>
+  </div>
+  <div style="margin-top:40px; padding: 20px; background: #f7fafc; border-radius: 10px; border: 1px solid #e2e8f0; text-align:left;">
+    <strong>📌 How to save this as PDF:</strong><br/>
+    Open this file in your browser → Press <strong>Ctrl + P</strong> → Change destination to <strong>"Save as PDF"</strong> → Click Save
+  </div>
+</div>
+
+<!-- ═══════════════════ TABLE OF CONTENTS ═══════════════════ -->
+<section>
+  <h1>📋 Table of Contents</h1>
+  <ul class="toc" style="list-style:none; margin-left:0;">
+    <li><span class="num">1.</span> <a href="#overview">Project Overview</a></li>
+    <li><span class="num">2.</span> <a href="#tech">Technology Stack</a></li>
+    <li><span class="num">3.</span> <a href="#arch">System Architecture</a></li>
+    <li><span class="num">4.</span> <a href="#folder">Folder Structure</a></li>
+    <li><span class="num">5.</span> <a href="#pages">All Pages Explained</a></li>
+    <li><span class="num">6.</span> <a href="#api">Alpha Vantage API Integration</a></li>
+    <li><span class="num">7.</span> <a href="#components">Components</a></li>
+    <li><span class="num">8.</span> <a href="#features">Key Features</a></li>
+    <li><span class="num">9.</span> <a href="#run">How to Run</a></li>
+    <li><span class="num">10.</span> <a href="#interview">Interview Q&amp;A</a></li>
+    <li><span class="num">11.</span> <a href="#concepts">Key Concepts Explained</a></li>
+  </ul>
+</section>
+
+<!-- ═══════════════════ 1. OVERVIEW ═══════════════════ -->
+<section id="overview" class="page-break">
+  <h1>1. Project Overview</h1>
+  <p>
+    <strong>StockPulse India</strong> is a full-stack web platform for Indian stock market analysis. 
+    Users can search for stocks listed on NSE/BSE, view real-time price data, analyze charts, 
+    track a personal watchlist, read AI-powered market news, and analyze their investment portfolio.
+  </p>
+
+  <div class="card blue">
+    <h4>🎯 What problem does it solve?</h4>
+    <p style="margin:0;">Retail investors in India often use multiple apps to check prices, read news, track portfolios, and analyze trends. StockPulse India combines all these into one clean, fast, dark-themed dashboard.</p>
+  </div>
+
+  <h2>Core Capabilities</h2>
+  <table>
+    <tr><th>Feature</th><th>Description</th></tr>
+    <tr><td>🔍 Stock Search</td><td>Search any NSE/BSE stock with live autocomplete</td></tr>
+    <tr><td>📊 Price Charts</td><td>Interactive area charts with 1W / 1M / 3M / 6M / 1Y periods</td></tr>
+    <tr><td>🧠 AI Trend Analysis</td><td>RSI + Moving Average signals — Bullish / Bearish / Neutral</td></tr>
+    <tr><td>📰 News Sentiment</td><td>Live news from Alpha Vantage with positive/negative/neutral labels</td></tr>
+    <tr><td>⭐ Watchlist</td><td>Save & track favourite stocks (stored in browser localStorage)</td></tr>
+    <tr><td>💼 Portfolio Analyzer</td><td>Track investments, P&amp;L, allocation pie chart, risk score</td></tr>
+    <tr><td>📈 Market Indices</td><td>Live NIFTY 50, SENSEX, BANK NIFTY, NIFTY IT, AUTO, MIDCAP</td></tr>
+    <tr><td>🎞️ Ticker Tape</td><td>Scrolling real-time stock prices across all pages</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════════ 2. TECH STACK ═══════════════════ -->
+<section id="tech">
+  <h1>2. Technology Stack</h1>
+  <table>
+    <tr><th>Layer</th><th>Technology</th><th>Why Used</th></tr>
+    <tr><td><strong>Framework</strong></td><td>Next.js 16 (App Router)</td><td>Server-side rendering, API routes, file-based routing</td></tr>
+    <tr><td><strong>Language</strong></td><td>TypeScript</td><td>Type safety, better developer experience, fewer bugs</td></tr>
+    <tr><td><strong>Styling</strong></td><td>Tailwind CSS + Custom CSS</td><td>Utility classes + custom dark theme design system</td></tr>
+    <tr><td><strong>Charts</strong></td><td>Recharts</td><td>React-native charts — Area, Bar, Pie with animations</td></tr>
+    <tr><td><strong>Icons</strong></td><td>Lucide React</td><td>Clean SVG icons for UI elements</td></tr>
+    <tr><td><strong>Data API</strong></td><td>Alpha Vantage</td><td>Real-time stock quotes, history, news, sentiment</td></tr>
+    <tr><td><strong>Persistence</strong></td><td>localStorage</td><td>Save watchlist &amp; portfolio without a database</td></tr>
+    <tr><td><strong>Runtime</strong></td><td>Node.js</td><td>Server runtime for Next.js API routes</td></tr>
+    <tr><td><strong>Fonts</strong></td><td>Inter + JetBrains Mono</td><td>Inter for text, Mono for prices/numbers</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════════ 3. ARCHITECTURE ═══════════════════ -->
+<section id="arch" class="page-break">
+  <h1>3. System Architecture</h1>
+  <div class="arch">
+    <div class="arch-box blue">🌐 Browser (User)</div>
+    <div class="arch-arrow">↕</div>
+    <div class="arch-box">⚛️ Next.js Frontend (React Components)</div>
+    <div class="arch-arrow">↕</div>
+    <div class="arch-box cyan">🔌 Next.js API Routes (Server-side)</div>
+    <div class="arch-arrow">↕</div>
+    <div class="arch-box purple">📡 Alpha Vantage REST API</div>
+    <div class="arch-arrow">↕</div>
+    <div class="arch-box green">📊 Indian Stock Market Data (NSE/BSE)</div>
+  </div>
+
+  <div class="card blue" style="margin-top:20px;">
+    <h4>🔒 Why are API routes server-side?</h4>
+    <p style="margin:0;">The Alpha Vantage API key is stored in <code>.env.local</code> and ONLY accessed inside Next.js API routes (<code>/app/api/...</code>). This means the key is <strong>never exposed to the browser</strong> — a critical security practice.</p>
+  </div>
+
+  <h2>Data Flow</h2>
+  <ol>
+    <li>User visits a page (e.g., <code>/analysis?symbol=TCS</code>)</li>
+    <li>React component calls <code>fetchStockQuote('TCS')</code> from <code>alphaVantage.ts</code></li>
+    <li><code>alphaVantage.ts</code> calls <code>fetch('/api/quote/TCS')</code> (our own server)</li>
+    <li>The Next.js API route at <code>/app/api/quote/[symbol]/route.ts</code> calls Alpha Vantage with the secret key</li>
+    <li>Alpha Vantage returns JSON → API route parses it → sends clean data to frontend</li>
+    <li>If Alpha Vantage fails or rate-limits, <code>alphaVantage.ts</code> falls back to mock data</li>
+    <li>Component receives data → renders chart, price, stats</li>
+  </ol>
+</section>
+
+<!-- ═══════════════════ 4. FOLDER STRUCTURE ═══════════════════ -->
+<section id="folder">
+  <h1>4. Folder Structure</h1>
+  <pre><code>D:\stock market\stockmarket\
+├── .env.local                  <span class="comment">← API key (never commit this!)</span>
+├── package.json                <span class="comment">← dependencies & scripts</span>
+├── next.config.ts              <span class="comment">← Next.js config</span>
+├── tsconfig.json               <span class="comment">← TypeScript config</span>
+│
+└── src\
+    ├── app\                    <span class="comment">← Next.js App Router pages</span>
+    │   ├── layout.tsx          <span class="comment">← Root layout (Navbar + TickerTape)</span>
+    │   ├── page.tsx            <span class="comment">← Dashboard (home page)</span>
+    │   ├── globals.css         <span class="comment">← Design system CSS</span>
+    │   ├── search\
+    │   │   └── page.tsx        <span class="comment">← Stock search page</span>
+    │   ├── analysis\
+    │   │   └── page.tsx        <span class="comment">← Stock analysis page</span>
+    │   ├── watchlist\
+    │   │   └── page.tsx        <span class="comment">← Watchlist page</span>
+    │   ├── news\
+    │   │   └── page.tsx        <span class="comment">← News & sentiment page</span>
+    │   ├── portfolio\
+    │   │   └── page.tsx        <span class="comment">← Portfolio analyzer</span>
+    │   └── api\                <span class="comment">← Server-side API routes</span>
+    │       ├── quote\[symbol]\route.ts
+    │       ├── history\[symbol]\route.ts
+    │       ├── search\route.ts
+    │       └── news\route.ts
+    │
+    ├── components\
+    │   ├── Navbar.tsx          <span class="comment">← Navigation bar</span>
+    │   ├── TickerTape.tsx      <span class="comment">← Scrolling price ticker</span>
+    │   ├── StockChart.tsx      <span class="comment">← Recharts area chart</span>
+    │   └── TrendBadge.tsx      <span class="comment">← AI trend signal badge</span>
+    │
+    ├── lib\
+    │   ├── stockService.ts     <span class="comment">← Mock data + trend logic</span>
+    │   └── alphaVantage.ts     <span class="comment">← Alpha Vantage client</span>
+    │
+    └── types\
+        └── stock.ts            <span class="comment">← TypeScript interfaces</span></code></pre>
+</section>
+
+<!-- ═══════════════════ 5. PAGES ═══════════════════ -->
+<section id="pages" class="page-break">
+  <h1>5. All Pages Explained</h1>
+
+  <h2>🏠 Page 1: Dashboard (<code>/</code>)</h2>
+  <div class="card green">
+    <strong>File:</strong> <code>src/app/page.tsx</code>
+  </div>
+  <p><strong>What it shows:</strong></p>
+  <ul>
+    <li>6 Market Indices: NIFTY 50, SENSEX, BANK NIFTY, NIFTY IT, NIFTY AUTO, MIDCAP 100</li>
+    <li>TCS stock area chart (real data from Alpha Vantage)</li>
+    <li>Top Gainers &amp; Top Losers tabs</li>
+    <li>Latest market news snippets</li>
+    <li>Quick navigation links to all other sections</li>
+    <li>🟢 "LIVE DATA" badge when Alpha Vantage responds</li>
+  </ul>
+  <p><strong>Key code concepts used:</strong> <code>useEffect</code>, <code>useState</code>, <code>async/await</code>, <code>Promise.all</code>, conditional rendering</p>
+
+  <h2>🔎 Page 2: Search (<code>/search</code>)</h2>
+  <div class="card green"><strong>File:</strong> <code>src/app/search/page.tsx</code></div>
+  <ul>
+    <li>Live search input with dropdown autocomplete</li>
+    <li>Recent searches saved in <code>localStorage</code></li>
+    <li>Popular stocks grid with live prices</li>
+    <li>On selection: shows full quote card with Open, High, Low, Volume, 52W High/Low</li>
+    <li>Buttons to "View Full Analysis" or "Add to Watchlist"</li>
+  </ul>
+
+  <h2>📊 Page 3: Stock Analysis (<code>/analysis?symbol=TCS</code>)</h2>
+  <div class="card green"><strong>File:</strong> <code>src/app/analysis/page.tsx</code></div>
+  <ul>
+    <li>Dropdown to select any stock symbol</li>
+    <li>Real-time quote card: price, change, OHLCV, P/E, 52W High/Low</li>
+    <li>Interactive price chart with period selector (1W / 1M / 3M / 6M / 1Y)</li>
+    <li>AI Trend Badge: Bullish / Bearish / Neutral with confidence %</li>
+    <li>Volume bar chart (last 14 sessions, green = up day, red = down day)</li>
+    <li>Historical data table (last 20 trading sessions)</li>
+  </ul>
+
+  <h2>⭐ Page 4: Watchlist (<code>/watchlist</code>)</h2>
+  <div class="card green"><strong>File:</strong> <code>src/app/watchlist/page.tsx</code></div>
+  <ul>
+    <li>Add any stock to your personal watchlist</li>
+    <li>Data persists across browser sessions using <code>localStorage</code></li>
+    <li>Shows live price, daily change % for each saved stock</li>
+    <li>Summary stats: how many stocks are gaining vs declining</li>
+    <li>Quick link to full analysis for each stock</li>
+  </ul>
+
+  <h2>📰 Page 5: News &amp; Insights (<code>/news</code>)</h2>
+  <div class="card green"><strong>File:</strong> <code>src/app/news/page.tsx</code></div>
+  <ul>
+    <li>Fetches real articles from Alpha Vantage <code>NEWS_SENTIMENT</code> endpoint</li>
+    <li>Each article tagged: Positive / Negative / Neutral with confidence %</li>
+    <li>Filter buttons: All / Positive / Negative / Neutral</li>
+    <li>Sidebar: overall market sentiment donut chart, sentiment breakdown bars</li>
+    <li>Loading spinner while fetching live news</li>
+  </ul>
+
+  <h2>💼 Page 6: Portfolio (<code>/portfolio</code>)</h2>
+  <div class="card green"><strong>File:</strong> <code>src/app/portfolio/page.tsx</code></div>
+  <ul>
+    <li>Add investments: symbol, quantity, average buy price</li>
+    <li>Calculates: Current Value, P&amp;L (₹), P&amp;L % for each holding</li>
+    <li>Summary cards: Total Invested, Current Value, Total P&amp;L, No. of Holdings</li>
+    <li>Allocation pie chart (Recharts)</li>
+    <li>Risk Assessment: Low / Medium / High based on portfolio diversification</li>
+    <li>Data persisted via <code>localStorage</code></li>
+  </ul>
+</section>
+
+<!-- ═══════════════════ 6. API INTEGRATION ═══════════════════ -->
+<section id="api" class="page-break">
+  <h1>6. Alpha Vantage API Integration</h1>
+  <p>Alpha Vantage provides free stock market data. The free tier allows <strong>25 API calls per day</strong>.</p>
+
+  <h2>API Endpoints Used</h2>
+  <table>
+    <tr><th>AV Function</th><th>Our Route</th><th>Purpose</th></tr>
+    <tr><td><code>GLOBAL_QUOTE</code></td><td><code>/api/quote/[symbol]</code></td><td>Current price, change, volume</td></tr>
+    <tr><td><code>TIME_SERIES_DAILY</code></td><td><code>/api/history/[symbol]</code></td><td>Historical OHLCV data</td></tr>
+    <tr><td><code>SYMBOL_SEARCH</code></td><td><code>/api/search</code></td><td>Find stocks by keyword</td></tr>
+    <tr><td><code>NEWS_SENTIMENT</code></td><td><code>/api/news</code></td><td>Latest news with AI sentiment</td></tr>
+  </table>
+
+  <h2>Indian Stock Symbol Format</h2>
+  <div class="card orange">
+    <p style="margin:0;">Alpha Vantage uses <strong>.BSE suffix</strong> for Indian stocks. So <code>TCS</code> becomes <code>TCS.BSE</code>, and <code>RELIANCE</code> becomes <code>RELIANCE.BSE</code>. Our API routes add this suffix automatically.</p>
+  </div>
+
+  <h2>Smart Fallback System</h2>
+  <p>If Alpha Vantage returns an error or rate-limits:</p>
+  <pre><code><span class="comment">// src/lib/alphaVantage.ts</span>
+<span class="keyword">export async function</span> fetchStockQuote(symbol: string) {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(`/api/quote/${symbol}`);
+    <span class="keyword">if</span> (!res.ok) <span class="keyword">throw new</span> Error();
+    <span class="keyword">return</span> <span class="keyword">await</span> res.json(); <span class="comment">// ✅ Real data</span>
+  } <span class="keyword">catch</span> {
+    <span class="keyword">return</span> mock.getStockQuote(symbol); <span class="comment">// 🔄 Fallback to mock</span>
+  }
+}</code></pre>
+
+  <h2>Environment Variable Setup</h2>
+  <pre><code><span class="comment"># .env.local (never commit this file!)</span>
+ALPHA_VANTAGE_KEY=QSCADU0I83V5NXND</code></pre>
+  <pre><code><span class="comment"># Accessing it in API route (server-side only)</span>
+<span class="keyword">const</span> KEY = process.env.ALPHA_VANTAGE_KEY!</code></pre>
+</section>
+
+<!-- ═══════════════════ 7. COMPONENTS ═══════════════════ -->
+<section id="components">
+  <h1>7. Components</h1>
+
+  <h2>Navbar.tsx</h2>
+  <ul>
+    <li>Top navigation bar visible on all pages</li>
+    <li>Glassmorphism design: <code>backdrop-filter: blur(12px)</code></li>
+    <li>Active page highlighting using <code>usePathname()</code> hook</li>
+    <li>Scroll effect: border appears after scrolling 10px</li>
+    <li>Mobile-responsive hamburger menu toggle</li>
+  </ul>
+
+  <h2>TickerTape.tsx</h2>
+  <ul>
+    <li>Scrolling strip of stock prices at the top of every page</li>
+    <li>CSS animation: <code>@keyframes ticker</code> translates X by 50% continuously</li>
+    <li>Duplicates data to create seamless infinite scroll</li>
+    <li>Auto-refreshes every 30 seconds</li>
+  </ul>
+
+  <h2>StockChart.tsx</h2>
+  <ul>
+    <li>Built with Recharts <code>&lt;AreaChart&gt;</code></li>
+    <li>Color changes: green (positive trend) or red (negative trend)</li>
+    <li>Custom tooltip showing date and price</li>
+    <li>Gradient fill under the line (SVG <code>&lt;linearGradient&gt;</code>)</li>
+    <li>Responsive: uses <code>&lt;ResponsiveContainer&gt;</code></li>
+    <li>Reference line: shows average price as a dashed line</li>
+  </ul>
+
+  <h2>TrendBadge.tsx</h2>
+  <ul>
+    <li>Shows AI trend analysis: Bullish 🟢 / Bearish 🔴 / Neutral ⚪</li>
+    <li>Confidence meter (progress bar 0–100%)</li>
+    <li>Lists detected signals: "Price above 50-day MA", "RSI &gt; 70" etc.</li>
+    <li>Technical indicators: RSI value, MA20, MA50</li>
+    <li>Two modes: <code>compact</code> (small badge) or full card</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════ 8. KEY FEATURES ═══════════════════ -->
+<section id="features" class="page-break">
+  <h1>8. Key Features (Technical Details)</h1>
+
+  <h2>AI Trend Analysis Logic</h2>
+  <div class="card purple">
+    <p>The trend analysis is computed in <code>stockService.ts → getTrendAnalysis()</code></p>
+  </div>
+  <pre><code><span class="comment">// Simplified version of the trend logic</span>
+<span class="keyword">function</span> getTrendAnalysis(symbol, history) {
+  <span class="comment">// Calculate 20-day and 50-day Moving Averages</span>
+  <span class="keyword">const</span> ma20 = average(history.slice(-20).map(d => d.close));
+  <span class="keyword">const</span> ma50 = average(history.slice(-50).map(d => d.close));
+  
+  <span class="comment">// Calculate RSI (Relative Strength Index)</span>
+  <span class="keyword">const</span> rsi = calculateRSI(history.slice(-14));
+  
+  <span class="comment">// Count bullish vs bearish signals</span>
+  <span class="keyword">let</span> bullish = 0, bearish = 0;
+  <span class="keyword">if</span> (currentPrice > ma20) bullish++;  <span class="keyword">else</span> bearish++;
+  <span class="keyword">if</span> (currentPrice > ma50) bullish++;  <span class="keyword">else</span> bearish++;
+  <span class="keyword">if</span> (ma20 > ma50) bullish++;          <span class="keyword">else</span> bearish++; <span class="comment">// Golden/Death Cross</span>
+  <span class="keyword">if</span> (rsi < 30) bullish++;             <span class="comment">// Oversold = buy signal</span>
+  <span class="keyword">if</span> (rsi > 70) bearish++;             <span class="comment">// Overbought = sell signal</span>
+  
+  <span class="keyword">return</span> { trend: bullish > bearish ? <span class="string">'Bullish'</span> : <span class="string">'Bearish'</span>, confidence };
+}</code></pre>
+
+  <h2>Dark Theme Design System</h2>
+  <pre><code><span class="comment">/* CSS Variables in globals.css */</span>
+:root {
+  --bg-primary:    #0a0e1a;  <span class="comment">/* Deep dark navy - main background */</span>
+  --bg-card:       #111827;  <span class="comment">/* Card background */</span>
+  --accent-blue:   #3b82f6;  <span class="comment">/* Primary colour */</span>
+  --accent-green:  #10b981;  <span class="comment">/* Positive/up colour */</span>
+  --accent-red:    #ef4444;  <span class="comment">/* Negative/down colour */</span>
+}</code></pre>
+
+  <h2>LocalStorage for Persistence</h2>
+  <pre><code><span class="comment">// Save watchlist</span>
+localStorage.setItem(<span class="string">'watchlist'</span>, JSON.stringify(list));
+
+<span class="comment">// Load watchlist on page load</span>
+<span class="keyword">const</span> saved = localStorage.getItem(<span class="string">'watchlist'</span>);
+<span class="keyword">const</span> list = saved ? JSON.parse(saved) : [];</code></pre>
+
+  <h2>Next.js API Route Pattern</h2>
+  <pre><code><span class="comment">// src/app/api/quote/[symbol]/route.ts</span>
+<span class="keyword">export async function</span> GET(req, { params }) {
+  <span class="keyword">const</span> { symbol } = <span class="keyword">await</span> params;
+  <span class="keyword">const</span> res = <span class="keyword">await</span> fetch(
+    `https://www.alphavantage.co/query?function=GLOBAL_QUOTE
+     &symbol=${symbol}.BSE&apikey=${process.env.ALPHA_VANTAGE_KEY}`
+  );
+  <span class="keyword">const</span> data = <span class="keyword">await</span> res.json();
+  <span class="keyword">return</span> NextResponse.json(data);
+}</code></pre>
+</section>
+
+<!-- ═══════════════════ 9. HOW TO RUN ═══════════════════ -->
+<section id="run">
+  <h1>9. How to Run</h1>
+
+  <h2>Prerequisites</h2>
+  <ul>
+    <li>Node.js v18 or higher installed</li>
+    <li>VS Code (recommended)</li>
+    <li>Internet connection (for Alpha Vantage API calls)</li>
+  </ul>
+
+  <h2>Step-by-Step</h2>
+  <ol>
+    <li>Open <strong>VS Code</strong></li>
+    <li>Go to <strong>File → Open Folder</strong> → select <code>D:\stock market\stockmarket</code></li>
+    <li>Open terminal: press <strong>Ctrl + `</strong> (backtick)</li>
+    <li>Run the command:</li>
+  </ol>
+  <pre><code>npm run dev</code></pre>
+  <ol start="5">
+    <li>Open browser and go to: <strong>http://localhost:3000</strong></li>
+  </ol>
+
+  <h2>Important Files</h2>
+  <table>
+    <tr><th>File</th><th>Purpose</th><th>Edit?</th></tr>
+    <tr><td><code>.env.local</code></td><td>Holds Alpha Vantage API key</td><td>Yes — put your key here</td></tr>
+    <tr><td><code>package.json</code></td><td>Project dependencies</td><td>No</td></tr>
+    <tr><td><code>src/lib/stockService.ts</code></td><td>Mock stock database</td><td>Yes — add more stocks</td></tr>
+    <tr><td><code>src/app/globals.css</code></td><td>Design system / theme</td><td>Yes — change colors</td></tr>
+  </table>
+
+  <h2>Available Scripts</h2>
+  <table>
+    <tr><th>Command</th><th>What it does</th></tr>
+    <tr><td><code>npm run dev</code></td><td>Start development server on port 3000</td></tr>
+    <tr><td><code>npm run build</code></td><td>Build production-ready app</td></tr>
+    <tr><td><code>npm run start</code></td><td>Run the production build</td></tr>
+    <tr><td><code>npm run lint</code></td><td>Check for TypeScript/ESLint errors</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════════ 10. INTERVIEW Q&A ═══════════════════ -->
+<section id="interview" class="page-break">
+  <h1>10. Interview Q&amp;A</h1>
+
+  <div class="qa">
+    <div class="question">Q: What is this project and what problem does it solve?</div>
+    <div class="answer">StockPulse India is a full-stack web application for Indian stock market analytics. It solves the problem of having to use multiple apps to check stock prices, read news, track portfolios, and analyze trends. Everything is in one platform with real-time data from Alpha Vantage API.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: Why did you choose Next.js over plain React?</div>
+    <div class="answer">Next.js provides: (1) <strong>API Routes</strong> — so I can keep the Alpha Vantage API key secure server-side without a separate Express backend, (2) <strong>App Router</strong> — file-based routing is cleaner, (3) <strong>Server-side rendering</strong> — better performance and SEO, (4) Built-in TypeScript and ESLint support out of the box.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: How did you secure the API key?</div>
+    <div class="answer">The Alpha Vantage key is stored in <code>.env.local</code> which is gitignored (never pushed to GitHub). It's only accessed inside Next.js API routes which run on the server — never in browser-side code. The <code>NEXT_PUBLIC_</code> prefix is deliberately NOT used, which would expose it to the browser.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: What is the fallback mechanism and why is it important?</div>
+    <div class="answer">Alpha Vantage free tier allows only 25 requests/day. When rate-limited, the <code>alphaVantage.ts</code> client catches the error and returns data from <code>stockService.ts</code> (mock data). This means the app <strong>never shows a blank page or crash</strong> — it degrades gracefully. This is called a "fallback pattern" and is essential for production apps.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: How does the watchlist work without a database?</div>
+    <div class="answer">The watchlist is stored in the browser's <code>localStorage</code> using <code>JSON.stringify/parse</code>. It persists across page refreshes and browser restarts on the same browser. The limitation is it's device-specific (not synced across devices). For a production app we'd add a database (PostgreSQL/MongoDB) + user authentication.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: Explain the AI Trend Analysis — is it real AI?</div>
+    <div class="answer">It uses <strong>rule-based technical analysis</strong>, not machine learning. It calculates: RSI (Relative Strength Index) over 14 days, 20-day Moving Average, 50-day Moving Average. Then it counts bullish vs bearish signals (e.g., price above MA50 = bullish signal). The confidence % reflects how many signals agree. While not "AI" in the ML sense, RSI and MA crossovers are legitimate technical analysis tools used by real traders and trading algorithms.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: What is TypeScript and why use it?</div>
+    <div class="answer">TypeScript adds static types to JavaScript. Benefits: (1) Catch errors at compile time, not runtime, (2) Better autocomplete in editors, (3) Self-documenting code — you can see what data shape a function expects. For example, the <code>StockQuote</code> interface in <code>types/stock.ts</code> ensures every component works with the same data structure.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: What is Recharts and how did you use it?</div>
+    <div class="answer">Recharts is a React charting library built on D3.js. I used three chart types: (1) <code>AreaChart</code> — for stock price history with gradient fill, (2) <code>BarChart</code> — for volume analysis (coloured by up/down day), (3) <code>PieChart</code> — for portfolio allocation and news sentiment. Each chart uses <code>ResponsiveContainer</code> to auto-size to its parent.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: What is glassmorphism in the Navbar?</div>
+    <div class="answer">Glassmorphism is a design trend where elements look like frosted glass. In the Navbar I used: <code>backdrop-filter: blur(12px)</code> (blurs what's behind), <code>background: rgba(17,24,39,0.7)</code> (semi-transparent dark), and <code>border: 1px solid rgba(255,255,255,0.05)</code> (subtle white border). This gives the nav a premium, modern look.</div>
+  </div>
+
+  <div class="qa">
+    <div class="question">Q: How would you scale this to production?</div>
+    <div class="answer">To scale: (1) Add <strong>PostgreSQL database</strong> with Prisma ORM — store users, watchlists, portfolios, (2) Add <strong>NextAuth.js</strong> for user authentication (Google/GitHub login), (3) Replace Alpha Vantage with a paid API like Finnhub or Bloomberg for more requests, (4) Add <strong>Redis caching</strong> to reduce API calls, (5) Deploy to <strong>Vercel</strong> (perfect for Next.js), (6) Add WebSocket for real-time price streaming.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 11. CONCEPTS ═══════════════════ -->
+<section id="concepts" class="page-break">
+  <h1>11. Key Concepts Explained</h1>
+
+  <h2>Technical Analysis Terms</h2>
+  <table>
+    <tr><th>Term</th><th>Full Form</th><th>Meaning</th></tr>
+    <tr><td>RSI</td><td>Relative Strength Index</td><td>Measures if a stock is overbought (&gt;70) or oversold (&lt;30)</td></tr>
+    <tr><td>MA20</td><td>20-day Moving Average</td><td>Average closing price of last 20 days — short-term trend</td></tr>
+    <tr><td>MA50</td><td>50-day Moving Average</td><td>Average closing price of last 50 days — medium-term trend</td></tr>
+    <tr><td>Golden Cross</td><td>—</td><td>MA20 crosses above MA50 — bullish signal</td></tr>
+    <tr><td>Death Cross</td><td>—</td><td>MA20 crosses below MA50 — bearish signal</td></tr>
+    <tr><td>OHLCV</td><td>Open/High/Low/Close/Volume</td><td>Standard daily stock price data</td></tr>
+    <tr><td>P/E Ratio</td><td>Price-to-Earnings</td><td>Stock price ÷ earnings per share — valuation metric</td></tr>
+    <tr><td>52W High/Low</td><td>52-Week High/Low</td><td>Highest and lowest price in the past year</td></tr>
+  </table>
+
+  <h2>Web Development Concepts Used</h2>
+  <table>
+    <tr><th>Concept</th><th>Used for</th></tr>
+    <tr><td>Client Components (<code>'use client'</code>)</td><td>Pages with useState, useEffect, browser events</td></tr>
+    <tr><td>Server Components</td><td>Default in Next.js App Router — no JS sent to browser</td></tr>
+    <tr><td>API Routes</td><td>Server-side endpoints at <code>/api/...</code></td></tr>
+    <tr><td>Dynamic Routes</td><td><code>[symbol]</code> in folder name = URL parameter</td></tr>
+    <tr><td>Environment Variables</td><td>Secrets like API keys stored in <code>.env.local</code></td></tr>
+    <tr><td>localStorage</td><td>Browser key-value storage persisting data locally</td></tr>
+    <tr><td>Promise.all</td><td>Run multiple async calls in parallel (faster)</td></tr>
+    <tr><td>Try/Catch</td><td>Handle API errors gracefully without crashing</td></tr>
+    <tr><td>CSS Variables</td><td><code>var(--accent-blue)</code> — reusable design tokens</td></tr>
+    <tr><td>Responsive Design</td><td><code>auto-fill</code> grid + percentage widths</td></tr>
+  </table>
+
+  <h2>Indian Stock Market Terms</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>NSE</td><td>National Stock Exchange — India's primary exchange</td></tr>
+    <tr><td>BSE</td><td>Bombay Stock Exchange — oldest exchange in Asia</td></tr>
+    <tr><td>NIFTY 50</td><td>Top 50 companies on NSE (index)</td></tr>
+    <tr><td>SENSEX</td><td>Top 30 companies on BSE (index)</td></tr>
+    <tr><td>BANK NIFTY</td><td>Index of top banking stocks</td></tr>
+    <tr><td>F&amp;O</td><td>Futures &amp; Options — derivatives market</td></tr>
+    <tr><td>Intraday</td><td>Trading within the same day</td></tr>
+    <tr><td>Delivery</td><td>Buying and holding stocks (not same-day)</td></tr>
+  </table>
+
+  <div class="card blue" style="margin-top:32px;">
+    <h3 style="margin-bottom:8px;">📌 Remember for Interviews</h3>
+    <ul style="margin-bottom:0;">
+      <li>This project demonstrates: <strong>Full-stack development, API integration, real-time data, React state management, TypeScript, security best practices</strong></li>
+      <li>You built 6 working pages, 4 components, 4 API routes, and a comprehensive CSS design system</li>
+      <li>The fallback pattern shows production thinking — apps should never crash</li>
+      <li>Using Next.js API routes as a proxy is a common pattern in modern web dev</li>
+      <li>localStorage for persistence is fine for MVPs / prototypes — mention database upgrade as next step</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center; margin-top:48px; padding: 24px; border-top: 2px solid #e2e8f0; color: #718096; font-size: 13px;">
+    <strong>StockPulse India</strong> — Built with Next.js 16, TypeScript, Recharts &amp; Alpha Vantage API<br/>
+    Project built: March 2026 &nbsp;|&nbsp; Stack: Next.js · TypeScript · Tailwind · Recharts · Alpha Vantage
+  </div>
+</section>
+
+</div>
+</body>
+</html>
