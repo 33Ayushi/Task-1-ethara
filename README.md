@@ -1,4 +1,4 @@
-# 🚀 StockPulse India  
+# 🚀 StockPulse 
 ## Production-Grade Full Stack Fintech Platform + Browser Extension Ecosystem
 
 <div align="center">
